@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Teacher Dashboard – ISE Portal</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body data-page="teacher-dashboard" data-role="teacher">
+  <header class="topbar">
+    <div class="topbar-left">
+      <span class="brand-badge">ISE Portal</span>
+      <h1>Teacher Workspace</h1>
+    </div>
+    <div class="topbar-right">
+      <span id="currentUserName" class="chip"></span>
+      <button id="logoutBtn" class="btn-ghost">Logout</button>
+    </div>
+  </header>
+
+  <div class="layout-main">
+    <nav class="sidebar">
+      <button class="sidebar-link active" data-target="teacherOverviewSection">
+        Overview
+      </button>
+      <button class="sidebar-link" data-target="attendanceSection">
+        Attendance
+      </button>
+      <button class="sidebar-link" data-target="resultSection">
+        Results
+      </button>
+    </nav>
+
+    <main class="content">
+      <!-- Overview -->
+      <section id="teacherOverviewSection" class="content-section active">
+        <h2>Welcome, Teacher</h2>
+        <p class="muted-text">
+          From here you can mark daily attendance and upload marks. Everything is persisted using
+          <code>localStorage</code>.
+        </p>
+        <div class="card-grid">
+          <article class="card">
+            <h3>Today’s Attendance Sessions</h3>
+            <p class="metric" id="teacherTodaySessions">–</p>
+          </article>
+          <article class="card">
+            <h3>Students in Course</h3>
+            <p class="metric" id="teacherStudentCount">–</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- Attendance Sub-page -->
+      <section id="attendanceSection" class="content-section">
+        <h2>Mark Attendance – SE-1001</h2>
+        <p class="muted-text">
+          Each submit counts as a new class session. Present/Absent will update each student's
+          attendance history.
+        </p>
+
+        <form id="attendanceForm" class="card">
+          <div class="form-grid-2">
+            <div class="form-group">
+              <label for="attendanceDate">Date</label>
+              <input type="date" id="attendanceDate" required />
+            </div>
+            <div class="form-group">
+              <label>Course</label>
+              <input type="text" value="SE-1001 – Software Engineering" disabled />
+            </div>
+          </div>
+
+          <div class="table-scroll">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Student ID</th>
+                  <th>Name</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody id="attendanceTableBody"></tbody>
+            </table>
+          </div>
+
+          <button type="submit" class="btn-primary">Save Attendance</button>
+          <p id="attendanceMessage" class="success-text hidden"></p>
+        </form>
+      </section>
+
+      <!-- Result Sub-page -->
+      <section id="resultSection" class="content-section">
+        <h2>Upload Marks – SE-1001</h2>
+        <p class="muted-text">
+          Enter marks for Mid, Final, and Sessionals. The system will calculate totals and grade
+          automatically.
+        </p>
+
+        <form id="resultForm" class="card">
+          <div class="table-scroll">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Student ID</th>
+                  <th>Name</th>
+                  <th>Sessional (30)</th>
+                  <th>Mid (30)</th>
+                  <th>Final (40)</th>
+                </tr>
+              </thead>
+              <tbody id="resultTableBody"></tbody>
+            </table>
+          </div>
+          <button type="submit" class="btn-primary">Save Results</button>
+          <p id="resultMessage" class="success-text hidden"></p>
+        </form>
+      </section>
+    </main>
+  </div>
+
+  <script src="js/storage.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/attendance.js"></script>
+  <script src="js/result.js"></script>
+</body>
+</html>

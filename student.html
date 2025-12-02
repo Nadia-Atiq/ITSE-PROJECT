@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Student Dashboard – ISE Portal</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body data-page="student-dashboard" data-role="student">
+  <header class="topbar">
+    <div class="topbar-left">
+      <span class="brand-badge">ISE Portal</span>
+      <h1>Student Dashboard</h1>
+    </div>
+    <div class="topbar-right">
+      <span id="currentUserName" class="chip"></span>
+      <button id="logoutBtn" class="btn-ghost">Logout</button>
+    </div>
+  </header>
+
+  <div class="layout-main">
+    <nav class="sidebar">
+      <button class="sidebar-link active" data-target="studentOverviewSection">
+        Overview
+      </button>
+      <button class="sidebar-link" data-target="studentAttendanceSection">
+        My Attendance
+      </button>
+      <button class="sidebar-link" data-target="studentResultSection">
+        My Result
+      </button>
+    </nav>
+
+    <main class="content">
+      <!-- Overview -->
+      <section id="studentOverviewSection" class="content-section active">
+        <h2>Hi, <span id="studentFirstName">Student</span> 👋</h2>
+        <p class="muted-text">
+          This is your single view of truth for SE-1001. Keep your attendance high and your grades
+          higher.
+        </p>
+
+        <div class="card-grid">
+          <article class="card">
+            <h3>Attendance</h3>
+            <p class="metric" id="studentAttendancePercent">–</p>
+            <p class="muted-text" id="studentAttendanceDetail"></p>
+          </article>
+          <article class="card">
+            <h3>Total Marks</h3>
+            <p class="metric" id="studentTotalMarks">–</p>
+            <p class="muted-text">
+              Grade: <span id="studentGrade">–</span>
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <!-- Attendance detail -->
+      <section id="studentAttendanceSection" class="content-section">
+        <h2>Attendance History</h2>
+        <div class="card">
+          <p class="muted-text">Each row represents a session that was recorded by your teacher.</p>
+          <div class="table-scroll">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Date</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody id="studentAttendanceTable"></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- Result detail -->
+      <section id="studentResultSection" class="content-section">
+        <h2>Result Breakdown</h2>
+        <div class="card">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Component</th>
+                <th>Max Marks</th>
+                <th>Obtained</th>
+              </tr>
+            </thead>
+            <tbody id="studentResultTable">
+              <!-- Filled from result.js -->
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="js/storage.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/attendance.js"></script>
+  <script src="js/result.js"></script>
+</body>
+</html>

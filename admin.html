@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Admin Dashboard – ISE Portal</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body data-page="admin-dashboard" data-role="admin">
+  <header class="topbar">
+    <div class="topbar-left">
+      <span class="brand-badge">ISE Portal</span>
+      <h1>Admin Dashboard</h1>
+    </div>
+    <div class="topbar-right">
+      <span id="currentUserName" class="chip"></span>
+      <button id="logoutBtn" class="btn-ghost">Logout</button>
+    </div>
+  </header>
+
+  <div class="layout-main">
+    <nav class="sidebar">
+      <button class="sidebar-link active" data-target="overviewSection">Overview</button>
+      <button class="sidebar-link" data-target="analyticsSection">Analytics</button>
+    </nav>
+
+    <main class="content">
+      <!-- Overview -->
+      <section id="overviewSection" class="content-section active">
+        <h2>System Snapshot</h2>
+        <div class="card-grid">
+          <article class="card">
+            <h3>Total Students</h3>
+            <p class="metric" id="metricStudents">–</p>
+          </article>
+          <article class="card">
+            <h3>Total Teachers</h3>
+            <p class="metric" id="metricTeachers">–</p>
+          </article>
+          <article class="card">
+            <h3>Average Attendance</h3>
+            <p class="metric" id="metricAttendance">–</p>
+          </article>
+          <article class="card">
+            <h3>Average Grade</h3>
+            <p class="metric" id="metricGrade">–</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- Analytics -->
+      <section id="analyticsSection" class="content-section">
+        <h2>Quick Analytics</h2>
+        <p class="muted-text">
+          High-level trends calculated from local storage. Use this slide in your presentation to impress
+          the instructor.
+        </p>
+        <div class="card">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Student</th>
+                <th>Attendance %</th>
+                <th>Total Marks</th>
+                <th>Grade</th>
+              </tr>
+            </thead>
+            <tbody id="adminStudentSummary"></tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="js/storage.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/attendance.js"></script>
+  <script src="js/result.js"></script>
+</body>
+</html>

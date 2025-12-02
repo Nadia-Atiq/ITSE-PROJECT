@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Student Attendance & Result Portal – Login</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body data-page="login">
+  <div class="layout-auth">
+    <section class="auth-hero">
+      <div class="brand-badge">SE-1001 • ISE Portal</div>
+      <h1>Welcome Back 👋</h1>
+      <p class="hero-subtitle">
+        Manage attendance, publish results, and stay on top of student performance — all in one place.
+      </p>
+      <ul class="hero-bullets">
+        <li>Admin: oversee classes & users</li>
+        <li>Teacher: mark attendance & upload marks</li>
+        <li>Student: track your progress in real time</li>
+      </ul>
+    </section>
+
+    <section class="auth-card">
+      <h2>Sign in to your portal</h2>
+      <p class="muted-text">Use the demo IDs defined by your group (or the defaults in <code>storage.js</code>).</p>
+
+      <form id="loginForm" class="form">
+        <div class="form-group">
+          <label for="userId">User ID</label>
+          <input
+            type="text"
+            id="userId"
+            name="userId"
+            placeholder="e.g. admin1, t1, s1"
+            required
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            placeholder="Demo: 123456"
+            required
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="role">Role</label>
+          <select id="role" name="role" required>
+            <option value="">Select your role</option>
+            <option value="admin">Admin</option>
+            <option value="teacher">Teacher</option>
+            <option value="student">Student</option>
+          </select>
+        </div>
+
+        <button type="submit" class="btn-primary full-width">Login</button>
+
+        <p id="loginError" class="error-text hidden"></p>
+      </form>
+
+      <div class="demo-note">
+        <h4>Demo credentials (you can edit in JS)</h4>
+        <ul>
+          <li>Admin → ID: <b>admin1</b> / Password: <b>123456</b></li>
+          <li>Teacher → ID: <b>t1</b> / Password: <b>123456</b></li>
+          <li>Student → ID: <b>s1</b>, <b>s2</b> / Password: <b>123456</b></li>
+        </ul>
+      </div>
+    </section>
+  </div>
+
+  <script src="js/storage.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/auth.js"></script>
+</body>
+</html>
